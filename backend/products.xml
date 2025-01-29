@@ -13,4 +13,18 @@
         <stock>30</stock>
         <description>Durable product B</description>
     </product>
-<product><id>3</id><name>Product C</name><price>5.99</price><stock>25</stock><description>Test</description></product></products>
+    <product>
+        <id>3</id>
+        <name>Product C</name>
+        <price>5.99</price>
+        <stock>25</stock>
+        <description>Test</description>
+    </product>
+    <product>
+        <id>4</id>
+        <name>Product D</name>
+        <price>5.99</price>
+        <stock>30</stock>
+        <description>Test 2</description>
+    </product>
+</products>
