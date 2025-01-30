@@ -1,12 +1,13 @@
 import React from "react";
-import ProductList from "./components/ProductList";
-import AddProduct from "./components/AddProduct";
+import AddBusiness from "./components/AddBusiness";
+import BusinessList from "./components/BusinessList";
+
 
 function App() {
     return (
         <div>
-            <AddProduct />
-            <ProductList />
+            <AddBusiness />
+            <BusinessList />
         </div>
     );
 }

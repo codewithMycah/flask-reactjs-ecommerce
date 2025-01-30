@@ -7,74 +7,80 @@ CORS(app)
 
 # Load and parse the XML file
 def load_xml():
-    tree = etree.parse("products.xml")
+    tree = etree.parse("businesses.xml")
     return tree.getroot()
 
 # Save changes back to the XML file
 def save_xml(root):
     tree = etree.ElementTree(root)
-    tree.write("products.xml", pretty_print=True, encoding="utf-8")
+    tree.write("businesses.xml", pretty_print=True, encoding="utf-8")
 
-# Read all products
-@app.route("/products", methods=["GET"])
-def get_products():
+# Read all businesses
+@app.route("/businesses", methods=["GET"])
+def get_businesses():
     root = load_xml()
-    products = []
-    for product in root.findall("product"):
-        products.append({
-            "id": product.find("id").text,
-            "name": product.find("name").text,
-            "price": float(product.find("price").text),
-            "stock": int(product.find("stock").text),
-            "description": product.find("description").text,
+    businesses = []
+    for business in root.findall("business"):
+        businesses.append({
+            "id": business.find("id").text,
+            "name": business.find("name").text,
+            "address": business.find("address").text,
+            "phone": business.find("phone").text,
+            "email": business.find("email").text,
+            "businessType": business.find("businessType").text,
+            "businessHours": business.find("businessHours").text,
         })
-    return jsonify(products)
+    return jsonify(businesses)
 
 # Add a new product
-@app.route("/products", methods=["POST"])
+@app.route("/businesses", methods=["POST"])
 def add_product():
     data = request.json
     root = load_xml()
 
-    new_product = etree.SubElement(root, "product")
-    etree.SubElement(new_product, "id").text = str(data["id"])
-    etree.SubElement(new_product, "name").text = data["name"]
-    etree.SubElement(new_product, "price").text = str(data["price"])
-    etree.SubElement(new_product, "stock").text = str(data["stock"])
-    etree.SubElement(new_product, "description").text = data["description"]
+    new_business = etree.SubElement(root, "business")
+    etree.SubElement(new_business, "id").text = str(data["id"])
+    etree.SubElement(new_business, "name").text = data["name"]
+    etree.SubElement(new_business, "address").text = data["address"]
+    etree.SubElement(new_business, "phone").text = data["phone"]
+    etree.SubElement(new_business, "email").text = data["email"]
+    etree.SubElement(new_business, "businessType").text = data["businessType"]
+    etree.SubElement(new_business, "businessHours").text = data["businessHours"]
 
     save_xml(root)
-    return jsonify({"message": "Product added successfully"}), 201
+    return jsonify({"message": "Business added successfully"}), 201
 
 # Update a product
-@app.route("/products/<int:product_id>", methods=["PUT"])
-def update_product(product_id):
+@app.route("/businesses/<int:business_id>", methods=["PUT"])
+def update_product(business_id):
     data = request.json
     root = load_xml()
 
-    for product in root.findall("product"):
-        if int(product.find("id").text) == product_id:
-            product.find("name").text = data["name"]
-            product.find("price").text = str(data["price"])
-            product.find("stock").text = str(data["stock"])
-            product.find("description").text = data["description"]
+    for business in root.findall("business"):
+        if int(business.find("id").text) == business_id:
+            business.find("name").text = data["name"]
+            business.find("address").text = data["address"]
+            business.find("phone").text = data["phone"]
+            business.find("email").text = data["email"]
+            business.find("businessType").text = data["businessType"]
+            business.find("businessHours").text = data["businessHours"]
             save_xml(root)
-            return jsonify({"message": "Product updated successfully"}), 200
+            return jsonify({"message": "Business updated successfully"}), 200
 
-    return jsonify({"message": "Product not found"}), 404
+    return jsonify({"message": "Business not found"}), 404
 
 # Delete a product
-@app.route("/products/<int:product_id>", methods=["DELETE"])
-def delete_product(product_id):
+@app.route("/businesses/<int:business_id>", methods=["DELETE"])
+def delete_product(business_id):
     root = load_xml()
 
-    for product in root.findall("product"):
-        if int(product.find("id").text) == product_id:
-            root.remove(product)
+    for business in root.findall("business"):
+        if int(business.find("id").text) == business_id:
+            root.remove(business)
             save_xml(root)
-            return jsonify({"message": "Product deleted successfully"}), 200
+            return jsonify({"message": "Business deleted successfully"}), 200
 
-    return jsonify({"message": "Product not found"}), 404
+    return jsonify({"message": "Business not found"}), 404
 
 if __name__ == "__main__":
     app.run(debug=True)

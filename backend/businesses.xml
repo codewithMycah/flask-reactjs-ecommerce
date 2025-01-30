@@ -1,0 +1,29 @@
+<businesses>
+    <business>
+        <id>1</id>
+        <name>Business A</name>
+        <address>123 Main St</address>
+        <phone>217-555-1234</phone>
+        <email>www.businessa.com</email>
+        <businessType>restaurant</businessType>
+        <businessHours>9-9</businessHours>
+    </business>
+    <business>
+        <id>2</id>
+        <name>Business B</name>
+        <address>456 Main St</address>
+        <phone>217-555-5678</phone>
+        <email>www.businessb.com</email>
+        <businessType>retail</businessType>
+        <businessHours>9-5</businessHours>
+    </business>
+    <business>
+        <id>3</id>
+        <name>Business C</name>
+        <address>here</address>
+        <phone>6303021618</phone>
+        <email>businessc@gmail.com</email>
+        <businessType>restaurant</businessType>
+        <businessHours>9-9</businessHours>
+    </business>
+<business><id>4</id><name>Business D</name><address>there</address><phone>1234</phone><email>aaa</email><businessType>aaa</businessType><businessHours>aaa</businessHours></business></businesses>
