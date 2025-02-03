@@ -5,7 +5,7 @@ const BusinessList = () => {
     const [business, setBusiness] = useState([]);
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:5000/businesses")
+        axios.get("http://127.0.0.1:5000")
             .then((response) => setBusiness(response.data))
             .catch((error) => console.error(error));
     }, []);

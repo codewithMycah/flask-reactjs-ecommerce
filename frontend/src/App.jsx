@@ -6,7 +6,7 @@ import BusinessList from "./components/BusinessList";
 function App() {
     return (
         <div>
-            <AddBusiness />
+            {/* <AddBusiness /> */}
             <BusinessList />
         </div>
     );

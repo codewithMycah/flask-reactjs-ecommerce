@@ -18,7 +18,13 @@ const AddBusiness = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://127.0.0.1:5000/businesses", formData)
+        axios.post("http://127.0.0.1:5000/businesses", formData,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
             .then(() => alert("Business added successfully"))
             .catch((error) => console.error(error));
     };

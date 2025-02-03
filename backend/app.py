@@ -1,8 +1,9 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask_cors import CORS # this is used to allow frontend (reactjs) to communicate with backend (flask and python)
 from lxml import etree
 
 app = Flask(__name__)
+# cors = CORS(app, resources={r'/*': {'origins': '*'}})
 CORS(app)
 
 # Load and parse the XML file
@@ -16,7 +17,7 @@ def save_xml(root):
     tree.write("businesses.xml", pretty_print=True, encoding="utf-8")
 
 # Read all businesses
-@app.route("/businesses", methods=["GET"])
+@app.route("/", methods=["GET"])
 def get_businesses():
     root = load_xml()
     businesses = []
@@ -30,7 +31,7 @@ def get_businesses():
             "businessType": business.find("businessType").text,
             "businessHours": business.find("businessHours").text,
         })
-    return jsonify(businesses)
+    return jsonify(businesses) #jsonify returns json (javascript object notation)
 
 # Add a new product
 @app.route("/businesses", methods=["POST"])

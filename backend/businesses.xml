@@ -26,4 +26,4 @@
         <businessType>restaurant</businessType>
         <businessHours>9-9</businessHours>
     </business>
-<business><id>4</id><name>Business D</name><address>there</address><phone>1234</phone><email>aaa</email><businessType>aaa</businessType><businessHours>aaa</businessHours></business></businesses>
+</businesses>
