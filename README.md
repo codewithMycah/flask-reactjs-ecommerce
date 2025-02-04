@@ -38,10 +38,5 @@ npm run dev
 
 ## Python libraries used for backend
 * [LXML](https://lxml.de/)
-```bash
-pip install lxml
-```
 * [Flask](https://flask.palletsprojects.com/en/stable/)
-```bash
-pip install flask flask-cors
-```
+
