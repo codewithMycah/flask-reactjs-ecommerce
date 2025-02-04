@@ -26,4 +26,4 @@
         <businessType>restaurant</businessType>
         <businessHours>9-9</businessHours>
     </business>
-</businesses>
+<business><id>4</id><name>Business D</name><address>sasa</address><phone>123</phone><email>dsd</email><businessType>dsd</businessType><businessHours>dsds</businessHours></business></businesses>
